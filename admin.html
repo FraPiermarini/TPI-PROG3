@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel Admin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Panel de Administrador</h2>
+
+  <button onclick="cerrarSesion()">Cerrar Sesión</button>
+
+  <h3>Crear nuevo usuario</h3>
+  <form id="crearUsuarioForm">
+    <input type="text" id="nuevoNombre" placeholder="Nombre" required>
+    <input type="email" id="nuevoEmail" placeholder="Correo electrónico" required>
+    <input type="password" id="nuevoPassword" placeholder="Contraseña" required>
+    <select id="nuevoRol">
+      <option value="USUARIO">USUARIO</option>
+      <option value="ADMIN">ADMIN</option>
+    </select>
+    <button type="submit">Crear</button>
+  </form>
+
+  <h3>Lista de usuarios</h3>
+  <ul id="listaUsuarios"></ul>
+
+  <script src="script.js"></script>
+</body>
+</html>
