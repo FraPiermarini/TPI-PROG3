@@ -1,10 +1,10 @@
 // ================== CONFIGURACIÓN ==================
-const API_USERS = "https://api.mockapi.io/example/users";
-const API_ROOMS = "https://api.mockapi.io/example/rooms";
-const API_RESERVATIONS = "https://api.mockapi.io/example/reservations";
+const API_USERS = "https://690f407f45e65ab24ac305d5.mockapi.io/:endpoint"
+const API_ROOMS = "https://690f407f45e65ab24ac305d5.mockapi.io/:endpoint"
+const API_RESERVATIONS = "https://691260db52a60f10c821792c.mockapi.io/:endpoint"
 
 
-// ================== REGISTRO ==================
+//REGISTRO 
 let registroForm = document.getElementById("registroForm");
 
 if (registroForm) {
