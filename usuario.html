@@ -9,6 +9,20 @@
   <h2>Bienvenido, <span id="nombreUsuario"></span></h2>
   <p>Rol: USUARIO</p>
   <button onclick="cerrarSesion()">Cerrar Sesión</button>
+  <h3>Habitaciones disponibles</h3>
+    <ul id="roomsList"></ul>
+  <h3>Reservar habitación</h3>
+<form id="formReserva">
+  <select id="roomSelect"></select><br>
+  <label>Check-in:</label>
+  <input type="date" id="checkIn"><br>
+  <label>Check-out:</label>
+  <input type="date" id="checkOut"><br>
+  <button type="submit">Reservar</button>
+</form>
+
+  <h3>Mis reservas</h3>
+    <ul id="misReservas"></ul>
 
   <script src="script.js"></script>
 </body>
