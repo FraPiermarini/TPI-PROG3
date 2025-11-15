@@ -4,18 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>Registrate aqui</h2>
+
+<header>HotelApp</header>
+<div class="container-wrapper">
+    <img src="C:\Users\Usuario\Desktop\Fran\Universidad\Tercer Cuatrimestre\Programacion 3\TPI\imagenes\hotel-presidente-4s.jpg" alt="Hotel izquierda" class="side-image left">
+
+<div class="container">
+    <h2>Registrate aquí</h2>
+
     <form id="registroForm">
         <input type="text" id="registroNombre" placeholder="Ingrese su nombre" required>
         <input type="email" id="registroEmail" placeholder="Ingrese su email" required>
-        <input type="password"  id="registroPassword" placeholder="Ingrese su contraseña" required>
+        <input type="password" id="registroPassword" placeholder="Ingrese su contraseña" required>
         <button type="submit">Enviar</button>
     </form>
-    <p>Ya tiene una cuenta <a href="login.html">Inicia sesion aqui</a></p>
-    <script src="config.js"></script>
-    <script src="registro.js"></script>
+
+    <p style="text-align:center; margin-top:15px;">
+        ¿Ya tienes una cuenta? <a href="login.html">Inicia sesión aquí</a>
+    </p>
+</div>
+<img src="imagenes/hotel-presidente-4s.jpg" alt="Hotel derecha" class="side-image right">
+
+</div> <!-- Cierre de container-wrapper -->
+
+<footer class="hotel-footer">
+  <span>📍 Hotel Presidente</span>
+  <span>📞 +54 9 351 123-4567</span>
+  <span>📧 hotelpresidente@gmail.com</span>
+  <span>📸 <a href="https://instagram.com/hotelpresidente" target="_blank">@hotelpresidente</a></span>
+</footer>
+
+<script src="config.js"></script>
+<script src="registro.js"></script>
 
 </body>
 </html>

@@ -6,25 +6,52 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h2>Bienvenido, <span id="nombreUsuario"></span></h2>
-  <p>Rol: USUARIO</p>
-  <button onclick="cerrarSesion()">Cerrar Sesión</button>
-  <h3>Habitaciones disponibles</h3>
-    <ul id="roomsList"></ul>
-  <h3>Reservar habitación</h3>
-<form id="formReserva">
-  <select id="roomSelect"></select><br>
-  <label>Check-in:</label>
-  <input type="date" id="checkIn"><br>
-  <label>Check-out:</label>
-  <input type="date" id="checkOut"><br>
-  <button type="submit">Reservar</button>
-</form>
 
-  <h3>Mis reservas</h3>
+<header>Panel del Usuario</header>
+<div class="container-wrapper">
+
+  <img src="imagenes/hotel-presidente-4s.jpg" alt="Hotel izquierda" class="side-image left">
+<div class="container">
+  <h2>Bienvenido, <span id="nombreUsuario"></span></h2>
+  <p style="text-align:center;">Rol: USUARIO</p>
+
+  <button onclick="cerrarSesion()">Cerrar Sesión</button>
+
+  <div class="section-box">
+    <h3>Habitaciones disponibles</h3>
+    <ul id="roomsList"></ul>
+  </div>
+
+  <div class="section-box">
+    <h3>Reservar habitación</h3>
+    <form id="formReserva">
+      <select id="roomSelect"></select><br>
+      <label>Check-in:</label>
+      <input type="date" id="checkIn"><br>
+      <label>Check-out:</label>
+      <input type="date" id="checkOut"><br>
+      <button type="submit">Reservar</button>
+    </form>
+  </div>
+
+  <div class="section-box">
+    <h3>Mis reservas</h3>
     <ul id="misReservas"></ul>
+  </div>
+</div>
+<img src="imagenes/hotel-presidente-4s.jpg" alt="Hotel derecha" class="side-image right">
+
+</div> <!-- Cierre de container-wrapper -->
+
+<footer class="hotel-footer">
+  <span>📍 Hotel Presidente</span>
+  <span>📞 +54 9 351 123-4567</span>
+  <span>📧 hotelpresidente@gmail.com</span>
+  <span>📸 <a href="https://instagram.com/hotelpresidente" target="_blank">@hotelpresidente</a></span>
+</footer>
 
 <script src="config.js"></script>
 <script src="usuario.js"></script>
+
 </body>
 </html>

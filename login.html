@@ -4,20 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>Iniciar Sesión</h2>
 
-    <form id="loginForm">
-        <input type="email" id="loginEmail" placeholder="Ingrese su Email" required> 
-        <input type="password" id="loginPassword" placeholder="Ingrese su contraseña" required>
-        <button type="submit">Ingresar</button>
-    </form>
+<header>HotelApp</header>
 
-    <p>¿No tienes cuenta? <a href="registro.html">Registrate acá</a></p>
+<div class="container-wrapper">
+    <img src="C:\Users\Usuario\Desktop\Fran\Universidad\Tercer Cuatrimestre\Programacion 3\TPI\imagenes\hotel-presidente-4s.jpg" alt="Hotel izquierda" class="side-image left">
 
-    <script src="config.js"></script>
-    <script src="login.js"></script>
+    <div class="container">
+        <h2>Iniciar Sesión</h2>
+
+        <form id="loginForm">
+            <input type="email" id="loginEmail" placeholder="Ingrese su Email" required> 
+            <input type="password" id="loginPassword" placeholder="Ingrese su contraseña" required>
+            <button type="submit">Ingresar</button>
+        </form>
+
+        <p style="text-align:center; margin-top:15px;">
+            ¿No tienes cuenta? <a href="registro.html">Registrate acá</a>
+        </p>
+    </div>
+
+    <img src="C:\Users\Usuario\Desktop\Fran\Universidad\Tercer Cuatrimestre\Programacion 3\TPI\imagenes\hotel-presidente-4s.jpg"  alt="Hotel derecha" class="side-image right">
+</div>
+
+<script src="config.js"></script>
+<script src="login.js"></script>
+<footer class="hotel-footer">
+    <p>📍 Hotel Presidente</p>
+    <p>📞 +54 9 351 123-4567</p>
+    <p>📧 hotelpresidente@gmail.com</p>
+    <p>📸 <a href="https://instagram.com/hotelpresidente" target="_blank">@hotelpresidente</a></p>
+</footer>
 
 </body>
 </html>

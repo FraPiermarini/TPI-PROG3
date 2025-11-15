@@ -68,6 +68,43 @@ if (window.location.pathname.includes("admin.html")) {
     });
   }
 
+  // === CAMBIO DE CONTRASEÑA POR NOMBRE ===
+const formPass = document.getElementById("cambiarconstraseña");
+
+if (formPass) {
+  formPass.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const nombre = document.getElementById("userNombre").value.trim();
+    const newPassword = document.getElementById("newPassword").value.trim();
+
+    // 1️⃣ Obtener todos los usuarios
+    const res = await fetch(API_USERS);
+    const usuarios = await res.json();
+
+    // 2️⃣ Buscar por nombre EXACTO
+    const user = usuarios.find(u => u.nombre.toLowerCase() === nombre.toLowerCase());
+
+    if (!user) {
+      alert("No existe un usuario con ese nombre ❌");
+      return;
+    }
+
+    // 3️⃣ Actualizar contraseña
+    await fetch(`${API_USERS}/${user.id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        ...user,
+        password: newPassword
+      })
+    });
+
+    alert(`Contraseña actualizada para ${user.nombre} ✅`);
+    formPass.reset();
+  });
+}
+
 async function actualizarEstadoReserva(id, nuevoEstado) {
   const res = await fetch(`${API_RESERVATIONS}/${id}`);
   const reserva = await res.json();
@@ -128,9 +165,56 @@ async function actualizarEstadoReserva(id, nuevoEstado) {
     });
     mostrarHabitacionesAdmin();
   }
+async function cargarDashboard() {
+  const res = await fetch(API_RESERVATIONS);
+  const reservas = await res.json();
 
+  // Contar estados (si no existen, se crean en 0)
+  let estados = {
+    activa: 0,
+    cancelada: 0,
+    finalizada: 0
+  };
+
+  reservas.forEach(r => {
+    const estado = (r.estado || "activo").toLowerCase();
+    if (estado.includes("cancel")) estados.cancelada++;
+    else if (estado.includes("final")) estados.finalizada++;
+    else estados.activa++;
+  });
+
+  // Crear gráfico
+  const ctx = document.getElementById("chartReservas");
+
+  new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: ["Activas", "Canceladas", "Finalizadas"],
+      datasets: [{
+        label: "Cantidad de reservas",
+        data: [
+          estados.activa,
+          estados.cancelada,
+          estados.finalizada
+        ]
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  });
+}
+
+// Llamar al dashboard cuando cargue la página
+cargarDashboard();
+
+  
   // === INICIALIZACIÓN ===
   mostrarUsuarios();
   mostrarReservasAdmin();
   mostrarHabitacionesAdmin();
 }
+

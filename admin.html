@@ -6,37 +6,71 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h2>Panel de Administrador</h2>
 
-  <button onclick="cerrarSesion()">Cerrar Sesión</button>
+<header>Administración</header>
 
-  <h3>Crear nuevo usuario</h3>
-  <form id="crearUsuarioForm">
-    <input type="text" id="nuevoNombre" placeholder="Nombre" required>
-    <input type="email" id="nuevoEmail" placeholder="Correo electrónico" required>
-    <input type="password" id="nuevoPassword" placeholder="Contraseña" required>
-    <select id="nuevoRol">
-      <option value="USUARIO">USUARIO</option>
-      <option value="ADMIN">ADMIN</option>
-    </select>
-    <button type="submit">Crear</button>
-  </form>
-  <h3>Cambiar contraseña de usuario</h3>
-  <form id="cambiarconstraseña">
-    <input type="text" id="userNombre" placeholder="Nombre del usuario" required>
-    <input type="password" id="newPassword" placeholder="Nueva contraseña" required>
-    <button type="submit">Cambiar contraseña</button>
-  </form>
-  <h2>Reservas (Admin)</h2>
-    <ul id="panelReservasAdmin"></ul>
-  
-    <h2>Habitaciones (Admin)</h2>
+<div class="container-wrapper">
+
+  <img src="imagenes/hotel-presidente-4s.jpg" alt="Hotel izquierda" class="side-image left">
+
+  <div class="container">
+
+    <h2>Panel de Administrador</h2>
+
+    <button onclick="cerrarSesion()">Cerrar Sesión</button>
+
+    <div class="section-box">
+      <h3>Crear nuevo usuario</h3>
+      <form id="crearUsuarioForm">
+        <input type="text" id="nuevoNombre" placeholder="Nombre" required>
+        <input type="email" id="nuevoEmail" placeholder="Correo electrónico" required>
+        <input type="password" id="nuevoPassword" placeholder="Contraseña" required>
+        <select id="nuevoRol">
+          <option value="USUARIO">USUARIO</option>
+          <option value="ADMIN">ADMIN</option>
+        </select>
+        <button type="submit">Crear</button>
+      </form>
+    </div>
+
+    <div class="section-box">
+      <h3>Cambiar contraseña de usuario</h3>
+      <form id="cambiarconstraseña">
+        <input type="text" id="userNombre" placeholder="Nombre del usuario" required>
+        <input type="password" id="newPassword" placeholder="Nueva contraseña" required>
+        <button type="submit">Cambiar contraseña</button>
+      </form>
+    </div>
+
+    <div class="section-box">
+      <h2>Reservas (Admin)</h2>
+      <ul id="panelReservasAdmin"></ul>
+    </div>
+
+    <div class="section-box">
+      <h2>Habitaciones (Admin)</h2>
       <ul id="panelHabitacionesAdmin"></ul>
+    </div>
 
+    <div class="section-box">
+      <h2>Dashboard de Reservas</h2>
+      <canvas id="chartReservas"></canvas>
+    </div>
 
-  <h3>Lista de usuarios</h3>
-  <ul id="listaUsuarios"></ul>
+  </div>
 
+  <img src="imagenes/hotel-presidente-4s.jpg" alt="Hotel derecha" class="side-image right">
+
+</div> <!-- Cierre de container-wrapper -->
+
+<footer class="hotel-footer">
+  <span>📍 Hotel Presidente</span>
+  <span>📞 +54 9 351 123-4567</span>
+  <span>📧 hotelpresidente@gmail.com</span>
+  <span>📸 <a href="https://instagram.com/hotelpresidente" target="_blank">@hotelpresidente</a></span>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="config.js"></script>
 <script src="admin.js"></script>
 

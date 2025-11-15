@@ -1,0 +1,181 @@
+/* ------------------ RESET ------------------ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* ------------------ BODY ------------------ */
+body {
+    background: #f5f7fa;
+    color: #333;
+}
+
+/* ------------------ HEADER ------------------ */
+header {
+    background: #00a8e8;   /* estilo atrapalo */
+    padding: 18px 30px;
+    text-align: center;
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+/* ------------------ CONTENEDOR ------------------ */
+.container {
+    width: 90%;
+    max-width: 600px;
+    margin: 40px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 30px rgba(0,0,0,0.08);
+}
+
+/* ------------------ TITULOS ------------------ */
+h2, h3 {
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* ------------------ INPUTS ------------------ */
+input, select {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: 1px solid #cfd6dd;
+    background: #f9fbfc;
+    transition: 0.2s;
+}
+
+input:focus, select:focus {
+    border-color: #00a8e8;
+    box-shadow: 0 0 8px rgba(0,168,232,0.3);
+    outline: none;
+}
+
+/* ------------------ BOTONES ------------------ */
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+    border: none;
+    background: #ff5722; /* naranja atrapalo */
+    color: white;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #e64a19;
+}
+
+/* ------------------ LISTAS ------------------ */
+ul {
+    list-style: none;
+    margin-top: 20px;
+}
+
+ul li {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 12px;
+    border: 1px solid #e4e7eb;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: 0.2s;
+}
+
+ul li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* ------------------ LINKS ------------------ */
+a {
+    color: #00a8e8;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ------------------ SECCION TITULADA ------------------ */
+.section-box {
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 15px;
+    background: #f1faff;
+    border: 1px solid #cceffc;
+}
+
+/* ------------------ CANVAS DEL DASHBOARD ------------------ */
+canvas {
+    margin-top: 20px;
+    background: white;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0px 5px 25px rgba(0,0,0,0.08);
+}
+
+/* ------------------ ENVOLVENTE CON IMÁGENES ------------------ */
+.container-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.side-image {
+    width: 400px;
+    height: 500px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    object-fit: cover;
+}
+
+.side-image.left {
+    order: -1;
+}
+
+.side-image.right {
+    order: 1;
+}
+
+/* ------------------ FOOTER HORIZONTAL ------------------ */
+.hotel-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    padding: 20px;
+    background: #00a8e8;
+    color: white;
+    font-size: 15px;
+    border-top: 1px solid #cceffc;
+    border-radius: 0 0 15px 15px;
+    margin-top: 60px;
+    text-align: center;
+}
+
+.hotel-footer a {
+    color: white;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.hotel-footer a:hover {
+    text-decoration: none;
+}
