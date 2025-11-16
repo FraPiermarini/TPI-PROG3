@@ -1,9 +1,8 @@
-// ================== PANEL USUARIO ==================
 if (window.location.pathname.includes("usuario.html")) {
   const sesion = JSON.parse(localStorage.getItem("sesion"));
-  if (!sesion) window.location.href = "login.html";
+  if (!sesion) window.location.href = "login.html";  //verifica que el usuario este logueado si no lo devuelve al login
 
-  document.getElementById("nombreUsuario").textContent = sesion.nombre;
+  document.getElementById("nombreUsuario").textContent = sesion.nombre; //muestra el nombre del usuario
 
   async function mostrarRooms() {
     const res = await fetch(API_ROOMS);
@@ -15,7 +14,7 @@ if (window.location.pathname.includes("usuario.html")) {
     rooms.forEach(r => {
       contenedor.innerHTML += `<li>${r.tipo} - $${r.precio} - ${r.disponible ? "Disponible" : "Ocupada"}</li>`;
     });
-  }
+  }  //cargar y muestra todas las habitaciones con los datos
 
   async function mostrarReservas() {
     const res = await fetch(API_RESERVATIONS);
@@ -114,7 +113,7 @@ if (window.location.pathname.includes("usuario.html")) {
       body: JSON.stringify({ disponible: false })
     });
 
-    alert("Reserva confirmada ✅");
+    alert("Reserva confirmada ");
     cargarHabitacionesDisponibles();
     mostrarRooms();
     mostrarReservas();

@@ -1,4 +1,3 @@
-// ================== PANEL ADMIN ==================
 if (window.location.pathname.includes("admin.html")) {
   const sesion = JSON.parse(localStorage.getItem("sesion"));
   if (!sesion || sesion.role !== "ADMIN") {
@@ -86,7 +85,7 @@ if (formPass) {
     const user = usuarios.find(u => u.nombre.toLowerCase() === nombre.toLowerCase());
 
     if (!user) {
-      alert("No existe un usuario con ese nombre ❌");
+      alert("No existe un usuario con ese nombre ");
       return;
     }
 
@@ -100,7 +99,7 @@ if (formPass) {
       })
     });
 
-    alert(`Contraseña actualizada para ${user.nombre} ✅`);
+    alert(`Contraseña actualizada para ${user.nombre} `);
     formPass.reset();
   });
 }
