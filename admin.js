@@ -1,18 +1,17 @@
 if (window.location.pathname.includes("admin.html")) {
-  const sesion = JSON.parse(localStorage.getItem("sesion"));
+  const sesion = JSON.parse(localStorage.getItem("sesion")); //obtiene la sesion
   if (!sesion || sesion.role !== "ADMIN") {
-    window.location.href = "login.html";
+    window.location.href = "login.html";  //si no hay sesion vuelve al login
   }
 
-  // === USUARIOS ===
   const lista = document.getElementById("listaUsuarios");
   const form = document.getElementById("crearUsuarioForm");
 
   async function mostrarUsuarios() {
     const res = await fetch(API_USERS);
-    const usuarios = await res.json();
+    const usuarios = await res.json();  //pide los usuarios a la api
 
-    lista.innerHTML = "";
+    lista.innerHTML = "";  //limpia
     usuarios.forEach(u => {
       lista.innerHTML += `<li>${u.nombre} - ${u.email} (${u.role})</li>`;
     });
@@ -24,33 +23,32 @@ if (window.location.pathname.includes("admin.html")) {
     const nombre = document.getElementById("nuevoNombre").value;
     const email = document.getElementById("nuevoEmail").value;
     const password = document.getElementById("nuevoPassword").value;
-    const role = document.getElementById("nuevoRol").value;
+    const role = document.getElementById("nuevoRol").value;  //crea un nuevo usuario con el formulario
 
     await fetch(API_USERS, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ nombre, email, password, role })
-    });
+    });  //carga el usuario en la api
 
     mostrarUsuarios();
-    form.reset();
+    form.reset();  //actualiza la lsta y limpia el formlario
   });
 
-  // === RESERVAS ===
   async function mostrarReservasAdmin() {
     const res = await fetch(API_RESERVATIONS);
-    const reservas = await res.json();
+    const reservas = await res.json();  //pide las reservas a la api
 
     const contenedor = document.getElementById("panelReservasAdmin");
-    contenedor.innerHTML = "";
+    contenedor.innerHTML = ""; //limpia
 
     reservas.forEach(r => {
       const item = document.createElement("li");
       item.innerHTML = `
         Usuario: ${r.userId}<br>
         Habitación: ${r.roomId}<br>
-        Desde: ${r.checkIn} &nbsp;&nbsp; Hasta: ${r.checkOut}<br>
-      `;
+        Desde: ${r.checkIn} &nbsp;&nbsp; Hasta: ${r.checkOut}<br> 
+      `;  //crea una lista con los datos de la resrva
 
       const select = document.createElement("select");
       ["ACTIVA", "CANCELADA", "FINALIZADA"].forEach(estado => {
@@ -59,15 +57,14 @@ if (window.location.pathname.includes("admin.html")) {
         option.textContent = estado;
         if (r.estado === estado) option.selected = true;
         select.appendChild(option);
-      });
+      });  //carga el selector del estado de la reserva
 
-      select.onchange = () => actualizarEstadoReserva(r.id, select.value);
+      select.onchange = () => actualizarEstadoReserva(r.id, select.value); //actualiza la pagina cuando carga el estado
       item.appendChild(select);
       contenedor.appendChild(item);
     });
   }
 
-  // === CAMBIO DE CONTRASEÑA POR NOMBRE ===
 const formPass = document.getElementById("cambiarconstraseña");
 
 if (formPass) {
@@ -77,19 +74,19 @@ if (formPass) {
     const nombre = document.getElementById("userNombre").value.trim();
     const newPassword = document.getElementById("newPassword").value.trim();
 
-    // 1️⃣ Obtener todos los usuarios
+    // obtiene todos los usuarios
     const res = await fetch(API_USERS);
     const usuarios = await res.json();
 
-    // 2️⃣ Buscar por nombre EXACTO
+    //Buscar por nombre EXACTO
     const user = usuarios.find(u => u.nombre.toLowerCase() === nombre.toLowerCase());
 
     if (!user) {
       alert("No existe un usuario con ese nombre ");
-      return;
+      return; //si no encuentra el usuario muestra esto
     }
 
-    // 3️⃣ Actualizar contraseña
+    //actualiza la contraseña en la api
     await fetch(`${API_USERS}/${user.id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -111,7 +108,7 @@ async function actualizarEstadoReserva(id, nuevoEstado) {
   const actualizada = {
     ...reserva,
     estado: nuevoEstado
-  };
+  };  //actualiza el estado de la reserva
 
   await fetch(`${API_RESERVATIONS}/${id}`, {
     method: "PUT",
@@ -119,14 +116,14 @@ async function actualizarEstadoReserva(id, nuevoEstado) {
     body: JSON.stringify(actualizada)
   });
 
-  // Actualizar disponibilidad de la habitación
+  //si el estado es cancelada o finalizada la muestra como disponible
   const disponible = nuevoEstado === "CANCELADA" || nuevoEstado === "FINALIZADA";
 
   await fetch(`${API_ROOMS}/${reserva.roomId}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ disponible })
-  });
+  }); //cambia el estado la appi
 
   mostrarReservasAdmin();
   mostrarHabitacionesAdmin();
@@ -149,7 +146,7 @@ async function actualizarEstadoReserva(id, nuevoEstado) {
       input.type = "number";
       input.value = h.precio;
       input.style.width = "80px";
-      input.onchange = () => actualizarPrecioHabitacion(h.id, input.value);
+      input.onchange = () => actualizarPrecioHabitacion(h.id, input.value); //actualiza el precio de la habitacion
 
       item.appendChild(input);
       contenedor.appendChild(item);
@@ -161,12 +158,12 @@ async function actualizarEstadoReserva(id, nuevoEstado) {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ precio: Number(nuevoPrecio) })
-    });
+    }); //carga el nuevo precio en la api
     mostrarHabitacionesAdmin();
   }
 async function cargarDashboard() {
   const res = await fetch(API_RESERVATIONS);
-  const reservas = await res.json();
+  const reservas = await res.json(); //pide las reservas
 
   // Contar estados (si no existen, se crean en 0)
   let estados = {
